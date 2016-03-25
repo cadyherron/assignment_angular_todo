@@ -55,22 +55,21 @@ todo.factory('todoService', function() {
   obj.taskOrder = '';
 
   obj.dropdownOrder = function(taskOrder) {
-    console.log(taskOrder);
     switch (taskOrder) {
       case ('none'):
         obj.taskOrder = '';
         break;
       case ('completedTop'):
-        obj.taskOrder = 'completed+';
+        obj.taskOrder = '-completed';
         break;
       case ('completedBottom'):
-        obj.taskOrder = 'completed-';
+        obj.taskOrder = '+completed';
         break;
       case('duedateAsc'):
-        obj.taskOrder = 'dueDate+';
+        obj.taskOrder = '+dueDate';
         break;
       case('duedateDesc'):
-        obj.taskOrder = 'dueDate-';
+        obj.taskOrder = '-dueDate';
         break;
     };
     return obj.taskOrder;

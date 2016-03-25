@@ -33,7 +33,6 @@ todo.controller("TodoCtrl", ['$scope', 'todoService', function($scope, todoServi
   $scope.taskOrder = todoService.taskOrder;
 
   $scope.dropdownOrder = function() {
-    console.log('app.js dropdownorder triggered');
     $scope.taskOrder = todoService.dropdownOrder($scope.taskOrder);
   }
 

@@ -18,6 +18,7 @@
   <option ng-click='dropdownOrder()' value='completedBottom'>Completed on Bottom</option>
   <option ng-click='dropdownOrder()' value='duedateAsc'>Due Date Ascending</option>
   <option ng-click='dropdownOrder()' value='duedateDesc'>Due Date Descending</option>
+  <input type="submit" ng-click="dropdownOrder()" value="Filter">
 </select>
 
 
@@ -38,7 +39,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr item-row ng-repeat="item in items | filterCompleted: completedStatus | orderBy: taskOrder" item="item" delete-todo="deleteTodo(item)" toggle-check='toggleCheck(item)'></tr>
+    <tr item-row ng-repeat="item in items | filterCompleted: completedStatus | orderBy: taskOrder " item="item" delete-todo="deleteTodo(item)" toggle-check='toggleCheck(item)'></tr>
   </tbody>
 
 </table>
