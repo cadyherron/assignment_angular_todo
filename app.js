@@ -1,63 +1,40 @@
 var todo = angular.module('todo', []);
 
 
-todo.controller("TodoCtrl", ['$scope', '$window', function($scope, $window) {
+todo.controller("TodoCtrl", ['$scope', 'todoService', function($scope, todoService) {
 
-  $scope.items = [
-        {text: "Play video games",
-          dueDate: new Date(),
-          completed: false}, 
-        {text: "Sleep",
-          dueDate: new Date(),
-          completed: false}, 
-        {text: "Write a blog post",
-          dueDate: new Date(),
-          completed: false} ];
-
-
-  $scope.createAlert = function() {
-    $window.alert("You clicked the click!")
-  };
+  $scope.items = todoService.allItems();
 
   $scope.createTodo = function() {
-    var newToDo = {};
-    newToDo.text = $scope.text;
-    newToDo.dueDate = $scope.dueDate;
-    newToDo.completed = false;
-    $scope.items.push(newToDo);
+    todoService.createTodo($scope.text, $scope.dueDate);
     $scope.text = '';
     $scope.dueDate = '';
   };
 
   $scope.deleteTodo = function(item) {
-    $scope.items.splice($scope.items.indexOf(item), 1);
+    todoService.deleteTodo(item);
   };
 
   $scope.toggleCheck = function(item) {
-    item.completed = !item.completed;
+    todoService.toggleCheck(item);
   };
 
   $scope.clearCompleted = function() {
-    var i = $scope.items.length - 1;
-    while (i >= 0) {
-      var item = $scope.items[i];
-      if (item.completed) {
-        $scope.deleteTodo(item);
-      };
-      i--;
-    };
+    todoService.clearCompleted();
   };
 
-  $scope.completedStatus = "Hide completed tasks";
+  $scope.completedStatus = todoService.completedStatus;
 
   $scope.toggleCompleted = function() {
-    if ($scope.completedStatus == "Show completed tasks") {
-      $scope.completedStatus = "Hide completed tasks"
-    } else {
-      $scope.completedStatus = "Show completed tasks"
-    }
+    todoService.toggleCompleted();
+    $scope.completedStatus = todoService.completedStatus;
   };
 
+  $scope.taskOrder = todoService.taskOrder;
 
+  $scope.dropdownOrder = function() {
+    console.log('app.js dropdownorder triggered');
+    $scope.taskOrder = todoService.dropdownOrder($scope.taskOrder);
+  }
 
 }])

@@ -12,6 +12,15 @@
 
 <button ng-click="toggleCompleted()">{{ completedStatus }}</button>
 
+<select ng-model='taskOrder'>
+  <option ng-click='dropdownOrder()' value='none'>None</option>
+  <option ng-click='dropdownOrder()' value='completedTop'>Completed on Top</option>
+  <option ng-click='dropdownOrder()' value='completedBottom'>Completed on Bottom</option>
+  <option ng-click='dropdownOrder()' value='duedateAsc'>Due Date Ascending</option>
+  <option ng-click='dropdownOrder()' value='duedateDesc'>Due Date Descending</option>
+</select>
+
+
 <form ng-submit='createTodo()'>
   <input type='text' placeholder='To-Do Item Here' ng-model='text'>
   <input type='text' placeholder='Due Date' ng-model='dueDate'>
@@ -29,7 +38,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr item-row ng-repeat="item in items | filterCompleted: completedStatus " item="item" delete-todo="deleteTodo(item)" toggle-check='toggleCheck(item)'></tr>
+    <tr item-row ng-repeat="item in items | filterCompleted: completedStatus | orderBy: taskOrder" item="item" delete-todo="deleteTodo(item)" toggle-check='toggleCheck(item)'></tr>
   </tbody>
 
 </table>
@@ -46,6 +55,7 @@
   <script type="text/javascript" src='app.js'></script>
   <script type="text/javascript" src='directives/item_row.js'></script>
   <script type="text/javascript" src='filters/filterCompleted.js'></script>
+  <script type="text/javascript" src='services/todoService.js'></script>
 
 </body>
 </html>
