@@ -47,4 +47,17 @@ todo.controller("TodoCtrl", ['$scope', '$window', function($scope, $window) {
       i--;
     };
   };
+
+  $scope.completedStatus = "Hide completed tasks";
+
+  $scope.toggleCompleted = function() {
+    if ($scope.completedStatus == "Show completed tasks") {
+      $scope.completedStatus = "Hide completed tasks"
+    } else {
+      $scope.completedStatus = "Show completed tasks"
+    }
+  };
+
+
+
 }])

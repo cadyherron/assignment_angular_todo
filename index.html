@@ -8,7 +8,9 @@
 <body ng-controller="TodoCtrl">
 
 
-<button ng-click="clearCompleted()">Clear completed tasks</button>
+<button ng-click="clearCompleted()">Clear completed tasks</button><br/>
+
+<button ng-click="toggleCompleted()">{{ completedStatus }}</button>
 
 <form ng-submit='createTodo()'>
   <input type='text' placeholder='To-Do Item Here' ng-model='text'>
@@ -27,7 +29,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr item-row ng-repeat="item in items" item="item" delete-todo="deleteTodo(item)" toggle-check='toggleCheck(item)'></tr>
+    <tr item-row ng-repeat="item in items | filterCompleted: completedStatus " item="item" delete-todo="deleteTodo(item)" toggle-check='toggleCheck(item)'></tr>
   </tbody>
 
 </table>
@@ -43,6 +45,7 @@
 
   <script type="text/javascript" src='app.js'></script>
   <script type="text/javascript" src='directives/item_row.js'></script>
+  <script type="text/javascript" src='filters/filterCompleted.js'></script>
 
 </body>
 </html>
