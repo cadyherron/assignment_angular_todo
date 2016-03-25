@@ -1,4 +1,4 @@
 <td>{{ item.text }}</td>
 <td>{{ item.dueDate | date }}</td>
-<td><input type='checkbox' ng-checked="{{ item.completed }}"/></td>
+<td><input type='checkbox' ng-checked="{{ item.completed }}" ng-click='toggleCheck(item)'/></td>
 <td><button ng-click="deleteTodo(item)">Delete</button></td>

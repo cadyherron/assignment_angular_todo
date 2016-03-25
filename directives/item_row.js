@@ -5,7 +5,8 @@ todo.directive('itemRow', function(){
     // things our directive can use:
     scope: {
         item: "=",
-        deleteTodo: "&"
+        deleteTodo: "&",
+        toggleCheck: '&'
     }
   };
 })

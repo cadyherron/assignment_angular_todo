@@ -30,8 +30,21 @@ todo.controller("TodoCtrl", ['$scope', '$window', function($scope, $window) {
   };
 
   $scope.deleteTodo = function(item) {
-    console.log(item);
     $scope.items.splice($scope.items.indexOf(item), 1);
-    console.log(item);
+  };
+
+  $scope.toggleCheck = function(item) {
+    item.completed = !item.completed;
+  };
+
+  $scope.clearCompleted = function() {
+    var i = $scope.items.length - 1;
+    while (i >= 0) {
+      var item = $scope.items[i];
+      if (item.completed) {
+        $scope.deleteTodo(item);
+      };
+      i--;
+    };
   };
 }])

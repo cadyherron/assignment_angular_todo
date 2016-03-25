@@ -8,7 +8,7 @@
 <body ng-controller="TodoCtrl">
 
 
-<button ng-click="createAlert()">Click to create a new task</button>
+<button ng-click="clearCompleted()">Clear completed tasks</button>
 
 <form ng-submit='createTodo()'>
   <input type='text' placeholder='To-Do Item Here' ng-model='text'>
@@ -27,7 +27,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr item-row ng-repeat="item in items" item="item" delete-todo="deleteTodo(item)"></tr>
+    <tr item-row ng-repeat="item in items" item="item" delete-todo="deleteTodo(item)" toggle-check='toggleCheck(item)'></tr>
   </tbody>
 
 </table>
