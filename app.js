@@ -3,10 +3,6 @@ var todo = angular.module('todo', []);
 
 todo.controller("TodoCtrl", ['$scope', '$window', function($scope, $window) {
 
-  $scope.item = { text: "Get groceries from the store",
-                  dueDate: new Date(),
-                  completed: false };
-
   $scope.items = [
         {text: "Play video games",
           dueDate: new Date(),
@@ -19,8 +15,22 @@ todo.controller("TodoCtrl", ['$scope', '$window', function($scope, $window) {
           completed: false} ];
 
 
-  $scope.createTodo = function() {
+  $scope.createAlert = function() {
     $window.alert("You clicked the click!")
-  }
+  };
 
-  }])
+  $scope.createToDo = function() {
+    var newToDo = {};
+    newToDo.text = $scope.text;
+    newToDo.dueDate = $scope.dueDate;
+    newToDo.completed = false;
+    $scope.items.push(newToDo);
+    $scope.text = '';
+    $scope.dueDate = '';
+  };
+
+  $scope.deleteToDo = function(item) {
+    $scope.items.splice($scope.items.indexOf(item), 1);
+    console.log(item);
+  };
+}])

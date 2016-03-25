@@ -8,8 +8,13 @@
 <body ng-controller="TodoCtrl">
 
 
-<button ng-click="createTodo()">Click to create a new task</button>
+<button ng-click="createAlert()">Click to create a new task</button>
 
+<form ng-submit='createToDo()'>
+  <input type='text' placeholder='To-Do Item Here' ng-model='text'>
+  <input type='text' placeholder='Due Date' ng-model='dueDate'>
+  <input type='submit' value='Create To-Do'>
+</form>
 
 
 <table>
@@ -18,6 +23,7 @@
       <td>Task</td>
       <td>Due Date</td>
       <td>Status</td>
+      <td>Delete Todo</td>
     </tr>
   </thead>
   <tbody>
