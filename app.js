@@ -19,7 +19,7 @@ todo.controller("TodoCtrl", ['$scope', '$window', function($scope, $window) {
     $window.alert("You clicked the click!")
   };
 
-  $scope.createToDo = function() {
+  $scope.createTodo = function() {
     var newToDo = {};
     newToDo.text = $scope.text;
     newToDo.dueDate = $scope.dueDate;
@@ -29,7 +29,8 @@ todo.controller("TodoCtrl", ['$scope', '$window', function($scope, $window) {
     $scope.dueDate = '';
   };
 
-  $scope.deleteToDo = function(item) {
+  $scope.deleteTodo = function(item) {
+    console.log(item);
     $scope.items.splice($scope.items.indexOf(item), 1);
     console.log(item);
   };

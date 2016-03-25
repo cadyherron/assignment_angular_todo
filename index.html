@@ -10,7 +10,7 @@
 
 <button ng-click="createAlert()">Click to create a new task</button>
 
-<form ng-submit='createToDo()'>
+<form ng-submit='createTodo()'>
   <input type='text' placeholder='To-Do Item Here' ng-model='text'>
   <input type='text' placeholder='Due Date' ng-model='dueDate'>
   <input type='submit' value='Create To-Do'>
@@ -23,21 +23,14 @@
       <td>Task</td>
       <td>Due Date</td>
       <td>Status</td>
-      <td>Delete Todo</td>
+      <td>Delete Todo</td> 
     </tr>
   </thead>
   <tbody>
-    <tr item-row ng-repeat="item in items" item="item"></tr>
-    <tr>
-        <td>"Get Groceries from the store"</td>
-        <td>Sep 7, 2016</td>
-        <td>Not Completed. One day this will be a checkbox.</td>
-    </tr>
+    <tr item-row ng-repeat="item in items" item="item" delete-todo="deleteTodo(item)"></tr>
   </tbody>
 
 </table>
-
-
 
 
 
